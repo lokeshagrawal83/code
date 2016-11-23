@@ -3,13 +3,13 @@
   <servlet>
     <display-name>HelloServlet</display-name>
     <servlet-name>HelloServlet</servlet-name>
-    <servlet-class>org.lok.demo.HelloServlet</servlet-class>
+    <servlet-class>org.java.demo.HelloServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>HelloServlet</servlet-name>
     <url-pattern>/</url-pattern>    
   </servlet-mapping>
   <listener>
-    <listener-class>org.lok.demo.db.ContextListener</listener-class>
+    <listener-class>org.java.demo.db.ContextListener</listener-class>
   </listener>
 </web-app>
