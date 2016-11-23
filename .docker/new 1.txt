@@ -1,0 +1,1 @@
+set CATALINA_OPTS = -DdbDriver=com.mysql.jdbc.Driver -DdbHost=localhost -DdbPort=3306 -DdbSchema=demo -DdbUser=root -DdbPass=Lokesh123

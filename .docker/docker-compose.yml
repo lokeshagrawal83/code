@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+    
+  MySQL:
+    build:
+      context: ./db
+    image: db
+    environment:
+      MYSQL_ROOT_PASSWORD: Lokesh123   
+      MYSQL_DATABASE: demo
+    ports:
+      - "3306:3306" 
+    networks:
+      demoNet:
+        aliases:
+          - mydatabase
+    restart: always
+
+  AppServer:
+    build:
+      context: ./appserver
+    image: appserver
+    ports:
+      - "8080:8080"
+    networks:
+      - demoNet
+    links:
+      - MySQL:db
+    restart: always
+    environment:
+      CATALINA_OPTS: -DdbDriver=com.mysql.jdbc.Driver -DdbHost=mydatabase -DdbPort=3306 -DdbSchema=demo -DdbUser=root -DdbPass=Lokesh123
+      
+networks:
+  demoNet:

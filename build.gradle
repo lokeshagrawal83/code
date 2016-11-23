@@ -1,0 +1,67 @@
+buildscript {
+  	repositories {
+    	jcenter()
+	}
+
+  	dependencies {
+    	classpath 'com.bmuschko:gradle-cargo-plugin:2.2.3'
+  	}
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'com.bmuschko.cargo'
+
+group = 'org.lok.demo'
+version = '1.0.0-SNAPSHOT'
+
+cargo {
+	containerId = 'tomcat8x'
+    port = 8080
+    
+    deployable {
+        context = 'demo'
+    }        
+    
+    remote {
+        hostname = '192.168.99.100'
+        username = 'tomcat1'
+        password = 'admin123'
+    }
+}
+
+cargoDeployRemote.dependsOn build
+cargoRedeployRemote.dependsOn build
+
+
+war {
+	webAppDirName = 'WebContent'
+	archiveName = 'demo.war'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven {
+        url "http://repo1.maven.org/maven2/"
+    }
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+    mavenLocal()
+}
+
+sourceSets {
+    main {
+        java.srcDir 'src'
+        resources.srcDir 'src'        
+    }
+}
+
+dependencies {
+
+	compile 'javax.servlet:javax.servlet-api:3.0.1'
+    compile 'mysql:mysql-connector-java:5.1.29'
+    compile 'com.jolbox:bonecp:0.8.0.RELEASE'
+    compile 'commons-dbutils:commons-dbutils:1.6'
+}
