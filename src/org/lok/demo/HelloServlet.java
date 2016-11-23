@@ -30,7 +30,7 @@ public class HelloServlet extends HttpServlet {
 			updateCounter(connection);
 			int counter = getCounter(connection);
 			PrintWriter out = resp.getWriter();
-	    	out.println("<h1>Hello World 2! Current counter:" + counter + "</h1>");
+	    	out.println("<h1>Hello World! " + counter + "</h1>");
 	    	out.close();
 	    	
 	    	resp.setStatus(200);
