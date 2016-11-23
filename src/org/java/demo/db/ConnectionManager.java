@@ -1,4 +1,4 @@
-package org.lok.demo.db;
+package org.java.demo.db;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

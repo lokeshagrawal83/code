@@ -1,4 +1,4 @@
-package org.lok.demo.db;
+package org.java.demo.db;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
