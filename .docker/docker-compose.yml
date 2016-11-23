@@ -7,7 +7,7 @@ services:
       context: ./db
     image: db
     environment:
-      MYSQL_ROOT_PASSWORD: Lokesh123   
+      MYSQL_ROOT_PASSWORD: <<root_password>>   
       MYSQL_DATABASE: demo
     ports:
       - "3306:3306" 
@@ -29,7 +29,7 @@ services:
       - MySQL:db
     restart: always
     environment:
-      CATALINA_OPTS: -DdbDriver=com.mysql.jdbc.Driver -DdbHost=mydatabase -DdbPort=3306 -DdbSchema=demo -DdbUser=root -DdbPass=Lokesh123
+      CATALINA_OPTS: -DdbDriver=com.mysql.jdbc.Driver -DdbHost=mydatabase -DdbPort=3306 -DdbSchema=demo -DdbUser=root -DdbPass=<<root_password>>
       
 networks:
   demoNet:
